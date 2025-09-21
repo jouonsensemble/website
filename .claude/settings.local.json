@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl 'https://www.myludo.fr/views/profil/datas.php?type=collection&id=38350&page=1&limit=18&filter=&family=&availability=&storage=&words=&players=&age=&duration=&context=&order=bydatedesc&_=1758461802602' )",
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,37 @@
+name: Deploy on production
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Add server to known hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+    - name: Deploy to server
+      uses: appleboy/ssh-action@master
+      with:
+        username: deploy
+        host: jouonsensemble.org
+        key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+        envs: GITHUB_REPOSITORY
+        script: |
+          chmod +x ~/deploy-jouonsensemble.sh
+          ~/deploy-jouonsensemble.sh
+      env:
+        GITHUB_REPOSITORY: ${{ github.repository }}
