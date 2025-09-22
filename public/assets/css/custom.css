@@ -161,6 +161,10 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(254, 96, 25, 0.9);
 }
 
+.text-primary {
+    color: #FE6019;
+}
+
 .card {
     background: white;
     border-radius: 0.5rem;
