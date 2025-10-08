@@ -72,7 +72,7 @@ Puis configurez nginx manuellement avec les certificats générés.
 
 ## 🛠️ Configuration du serveur
 
-Voir le dossier `server/` pour les fichiers de configuration nginx.
+Voir le dossier `server/` pour les fichiers de configuration.
 
 ## 📱 Fonctionnalités
 
@@ -83,13 +83,6 @@ Voir le dossier `server/` pour les fichiers de configuration nginx.
 
 ## 🔧 Développement local
 
-Le site est statique et peut être ouvert directement dans un navigateur.
-
-Pour le développement avec serveur local :
 ```bash
-# Serveur Python simple
-python3 -m http.server 8000
-
-# Ou avec Node.js
-npx serve .
+docker compose up
 ```
