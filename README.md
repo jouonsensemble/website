@@ -1,6 +1,6 @@
 # Jouons Ensemble - Site Web
 
-Site web statique pour la ludothèque "Jouons Ensemble" de Vernou-la-Celle-sur-Seine.
+Site pour la ludothèque "Jouons Ensemble" de Vernou-la-Celle-sur-Seine.
 
 ## 🚀 Déploiement
 
