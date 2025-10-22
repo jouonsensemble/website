@@ -45,6 +45,19 @@ else
     git pull origin $BRANCH
 fi
 
+echo "📦 Installation des dépendances Composer (mode production)..."
+if ! command -v composer >/dev/null 2>&1; then
+    echo "❌ Composer est introuvable dans le PATH. Abandon."
+    exit 1
+fi
+
+composer install \
+    --no-dev \
+    --optimize-autoloader \
+    --prefer-dist \
+    --no-progress \
+    --no-interaction
+
 echo "🔐 Configuration des permissions..."
 chown -R deploy:www-data "$DEPLOY_DIR" 2>/dev/null || echo "⚠️  Permissions déjà correctes"
 chmod -R 755 "$DEPLOY_DIR"
