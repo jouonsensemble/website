@@ -23,6 +23,7 @@ fi
 REPO_URL="git@github.com:jouonsensemble/website.git"
 DEPLOY_DIR="$ALLOWED_DEPLOY_DIR"
 BRANCH="main"
+GIT_SSH_COMMAND_VALUE="ssh -i ~/.ssh/jouonsensemble"
 
 echo "🚀 Début du déploiement..."
 
@@ -35,14 +36,14 @@ if [ ! -d "$DEPLOY_DIR" ] || [ ! -d "$DEPLOY_DIR/.git" ]; then
         rm -rf "$DEPLOY_DIR"/* "$DEPLOY_DIR"/.* 2>/dev/null || true
     fi
 
-    git clone "$REPO_URL" "$DEPLOY_DIR"
+    GIT_SSH_COMMAND="$GIT_SSH_COMMAND_VALUE" git clone "$REPO_URL" "$DEPLOY_DIR"
     cd "$DEPLOY_DIR"
 else
     echo "🔄 Mise à jour du code..."
     cd "$DEPLOY_DIR"
-    git fetch origin
+    GIT_SSH_COMMAND="$GIT_SSH_COMMAND_VALUE" git fetch origin
     git reset --hard origin/$BRANCH
-    git pull origin $BRANCH
+    GIT_SSH_COMMAND="$GIT_SSH_COMMAND_VALUE" git pull origin $BRANCH
 fi
 
 echo "📦 Installation des dépendances Composer (mode production)..."
