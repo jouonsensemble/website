@@ -8,6 +8,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ARG PHP_VERSION=${PHP_VERSION}
 
+ENV TZ=Europe/Paris
+
 # Install selected extensions and other stuff
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
